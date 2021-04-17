@@ -26,7 +26,7 @@ function passwordsPrompt() {
   }
   
   var userChoices = {
-    length: passwordLength,
+    len: passwordLength,
     numbers: numbers,
     lowerCase: lowerCases,
     upperCase: upperCases,
@@ -46,14 +46,15 @@ function passwordsPrompt() {
 function generatePassword() {
   var blah = passwordsPrompt()//USERS CHOICES 
   console.log(blah)
-  
-  if (blah.numbers === true){
-    console.log(getRandomNumber())
-    
+  var passwordVal = "";
+  for(var i = 0; i < blah.len; i++) {
+    passwordVal = passwordVal + getRandomNumber()
+    console.log(passwordVal)
   }
+  return passwordVal
 } 
 
-generatePassword()
+writePassword()
 
 
 // random functions 
@@ -80,6 +81,7 @@ function getRandomsymbol() {
   // Write password to the #password input
   function writePassword() {
     var password = generatePassword();
+    
     var passwordText = document.querySelector("#password");
     
     passwordText.value = password;
