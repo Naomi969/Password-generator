@@ -46,12 +46,39 @@ function passwordsPrompt() {
 function generatePassword() {
   var blah = passwordsPrompt()//USERS CHOICES 
   console.log(blah)
+  var selected = []
+  if (blah.numbers) {
+    selected.push("getRandomNumber")
+  }
+  if (blah.lowerCase) {
+    selected.push("getRandomLower")
+  }
+  if (blah.upperCase) {
+    selected.push("getRandomUpper")
+  }
+  if (blah.specialChar) {
+    selected.push("getRandomsymbol")
+  }
+  console.log(selected)
   var passwordVal = "";
   for(var i = 0; i < blah.len; i++) {
-    passwordVal = passwordVal + getRandomNumber()
-    console.log(passwordVal)
+    var randomIndex = Math.floor(Math.random() * selected.length);
+    if (selected[randomIndex]== "getRandomNumber") {
+      passwordVal = passwordVal + getRandomNumber()
+    }
+    if (selected[randomIndex]== "getRandomLower") {
+      passwordVal = passwordVal + getRandomlower()
+    }
+    if (selected[randomIndex]== "getRandomUpper") {
+      passwordVal = passwordVal + getRandomUpper()
+    }
+    if (selected[randomIndex]== "getRandomsymbol") {
+      passwordVal = passwordVal + getRandomsymbol()
+    }
   }
+  console.log(passwordVal)
   return passwordVal
+
 } 
 
 writePassword()
